@@ -1,13 +1,14 @@
-import React from 'react'
-import SearchInput from '../components/SearchInput'
+import React from 'react';
+import CocktailList from '../components/CocktailList';
+import SearchInput from '../components/SearchInput';
 
 const Home = () => {
-  return (
-    <div>
-      <SearchInput />
-      {/* Cocktail List */}
-    </div>
-  )
-}
+    return (
+        <div>
+            <SearchInput />
+            <CocktailList />
+        </div>
+    );
+};
 
-export default Home
+export default Home;

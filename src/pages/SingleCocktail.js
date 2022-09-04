@@ -13,7 +13,7 @@ const SingleCocktail = () => {
 
     useEffect(() => {
         dispatch(fetchSingleCocktail({ id }));
-    }, [id]); //will only run with a (new) id
+    }, [id, dispatch]); //will only run with a (new) id
 
     useEffect(() => {
         if (cocktail.length > 0) {
@@ -72,7 +72,7 @@ const SingleCocktail = () => {
                         <span className="visually-hidden">loading...</span>
                     </div>
                 ) : (
-                    <section class="section cocktail-section">
+                    <section className="section cocktail-section">
                         <Link to="/">
                             <button
                                 className="btn btn-danger"

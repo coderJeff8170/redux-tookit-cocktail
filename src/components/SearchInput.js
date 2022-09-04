@@ -1,18 +1,40 @@
 import React, { useRef } from 'react';
-import "./SearchInput.css";
+import { fetchSearchCocktail } from '../redux/features/cocktailSlice';
+import { useDispatch } from 'react-redux';
+import './SearchInput.css';
 
 const SearchInput = () => {
     const searchValue = useRef();
-  return (
-    <section className="section search">
-        <form className="search-form">
-            <div className="form-control">
-                <label htmlFor="name">Search Cocktail</label>
-                <input type="text" name="name" id="name" ref={searchValue} />
-            </div>
-        </form>
-    </section>
-  )
-}
+    const dispatch = useDispatch();
 
-export default SearchInput
+    
+
+    const handleChange = () => {
+        const searchText = searchValue.current.value;
+        
+        dispatch(fetchSearchCocktail({searchText}));
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+  };
+
+    return (
+        <section className="section search">
+            <form className="search-form" onSubmit={handleSubmit}>
+                <div className="form-control">
+                    <label htmlFor="name">Search Cocktail</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        ref={searchValue}
+                        onChange={handleChange}
+                    />
+                </div>
+            </form>
+        </section>
+    );
+};
+
+export default SearchInput;

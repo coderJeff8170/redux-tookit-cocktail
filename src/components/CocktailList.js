@@ -11,7 +11,7 @@ const CocktailList = () => {
 
     useEffect(() => {
         dispatch(fetchCocktails());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (cocktails) {
@@ -43,6 +43,10 @@ const CocktailList = () => {
                 <span className="visually-hidden">loading...</span>
             </div>
         );
+    }
+
+    if (!cocktails) {
+      return <h2>No Cocktails matched your search.</h2>
     }
 
     return (
